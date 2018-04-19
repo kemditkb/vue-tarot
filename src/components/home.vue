@@ -2,8 +2,11 @@
   <div>
     <div class="title">
       <img class="logo" src="../assets/tarot_logo.jpg">
-      <h1> 塔羅機器人 </h1>
+      <transition enter-active-class="animated wobble" leave-active-class="animated wobble">
+        <h1> 塔羅機器人 </h1>
+      </transition>
     </div>
+    <divider>start from here</divider>
     <div class="start">
       <x-button link="start" class="button" :gradients="['#FF2719', '#FF61AD']">開始使用</x-button>
     </div>
@@ -11,11 +14,11 @@
 </template>
 
 <script>
-import { XButton } from 'vux'
+import { XButton,Divider } from 'vux'
 
 export default {
   components: {
-    XButton
+    XButton,Divider
   },
   data () {
     return {
@@ -26,6 +29,15 @@ export default {
 </script>
 
 <style scoped>
+
+@import  '../node_modules/animate.css/animate.css'
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 
 .logo {
   border-radius: 99px;

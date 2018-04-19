@@ -1,6 +1,8 @@
 <template>
-  <div id="app" @click.right="e=>e.preventDefault()">
-		<router-view></router-view>
+  <div id="app">
+  	<transition name="fade">
+			<router-view></router-view>
+		</transition>
   </div>
 </template>
 
@@ -11,28 +13,18 @@ export default {
 </script>
 
 <style>
-
-body{
-	background-color: white;
-	user-select : none;
+.fade-enter-active, .fade-leave-active {
+  transition-property: opacity;
+  transition-duration: .25s;
 }
 
-body {
-	background-image: url("./assets/background.jpg");
-}
-body::after{
-	content:"";
-
-  background: rgba(233, 240, 255,0.9);
-
-	top:0;
-	left:0;
-	bottom: 0;
-	right:0;
-	position: absolute;
-	z-index: -1;
+.fade-enter-active {
+  transition-delay: .25s;
 }
 
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
 
 .button {
   font-size: 25px !important;
@@ -46,4 +38,10 @@ body::after{
   margin-bottom: 10px;
   text-align: center;
 }
+
+body{
+	user-select : none;
+	background: rgba(233, 240, 255,0.9);	
+}
+
 </style>
