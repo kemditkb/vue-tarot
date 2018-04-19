@@ -1,13 +1,12 @@
 <template>
   <div>
-    <div class="bot">
+    <div class="title">
       <img class="logo" src="../assets/tarot_logo.jpg">
-      <h1 id="title"> 塔羅機器人 </h1>
+      <h1> 塔羅機器人 </h1>
     </div>
     <div class="start">
       <x-button link="start" class="button" :gradients="['#FF2719', '#FF61AD']">開始使用</x-button>
     </div>
-
   </div>
 </template>
 
@@ -26,17 +25,14 @@ export default {
 }
 </script>
 
-<style scope>
-.bot {
-  margin-top:20vh;
-  margin-bottom: 10px;
-  text-align: center;
-}
+<style scoped>
+
 .logo {
   border-radius: 99px;
   width: 150px;
   height: 150px
 }
+
 .start {
   margin:40px;
 }

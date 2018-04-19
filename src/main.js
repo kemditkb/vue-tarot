@@ -7,6 +7,10 @@ import App from './App'
 import Home from '@/components/home'
 import Start from '@/components/start'
 
+import About from '@/components/stage1/about'
+import Daily from '@/components/stage1/daily'
+import Disclaimer from '@/components/stage1/disclaimer'
+import Spread from '@/components/stage1/spread'
 
 Vue.use(VueRouter)
 
@@ -16,6 +20,18 @@ const routes = [{
 },{
   path: '/start',
   component:Start
+},{
+	path: '/about',
+	component:About,
+},{
+	path: '/daily',
+	component:Daily,
+},{
+	path: '/disclaimer',
+	component:Disclaimer,
+},{
+	path: '/spread',
+	component:Spread,
 }
 ]
 
