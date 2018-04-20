@@ -82,7 +82,7 @@ export default {
       for(let i=0;i<this.number;i++){
         this.each[i] = {};
         if(d[i].reversed) this.each[i].style='transform: scaleY(-1);'
-        this.each[i].path = "/static/tarot/"+d[i].fileName;
+        this.each[i].path = d[i].path;
         this.each[i].card = d[i].card;
       }
       this.draw=true

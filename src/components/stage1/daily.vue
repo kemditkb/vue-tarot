@@ -13,9 +13,10 @@
             <h5 class="card-name">{{ card }}</h5>
           </div>
         </flexbox-item>
-        
       </flexbox>
     </div>
+
+    <p class="draw-time">{{time.month}}月{{time.date}}號 {{time.hours}}點</p>
 
     <div class="choose">
       <div  id="enter" v-if="!draw">
@@ -42,39 +43,66 @@ export default {
   },
   data () {
     return {
+      time:{
+        month:Number,
+        date:Number,
+        hours:Number,
+      },
       msg:"Choose one",
-      time:0,
+      startTouchTime:0,
       draw:false,
-      path:'/static/tarot/',
+      path:'',
       mean:'',
       card:'',
       style:'',
     }
   },
+  created(){
+    let rc = this.$ls.get('daily','nothing')
+    if(rc=='nothing') return;
+    console.log(rc)
+    this.render(rc);
+  }
+  ,
   methods:{
     leaveHandler(){
       history.back();
     },
-    tStart(e){
-      this.time = e.timeStamp;
-      this.size+=50;
-      console.log('hi')
-    },
-    tEnd(e){
-      let touchTime = (e.timeStamp-this.time)/1000;
-      if(touchTime<1.5) return
-      this.msg="Go Back"
-      console.log(touchTime);
-      //if(touchTime<1) return;
-      //這邊抽牌！
+    render(d){
 
-      let d = daily();
-      console.log(d)
-      if(d.reversed) this.style=' transform: scaleY(-1);'
-      this.path += d.fileName;
+      if(d.reversed) this.style='transform: scaleY(-1);'
+      this.path = d.path;
       this.mean = d.mean;
       this.card = d.card;
+      this.time = d.time;
+      this.msg="Go Back"
       this.draw = true;
+    },
+    tStart(e){
+      this.startTouchTime = e.timeStamp;
+      this.size+=50;
+    },
+    tEnd(e){
+      let touchtime = (e.timeStamp-this.startTouchTime)/1000;
+//      if(touchTime<1.5) return
+
+      let d = daily();
+      let now = new Date;
+      d.time = {
+            'month':now.getMonth()+1,//會差一個月
+            'date':now.getDate(),
+            'hours':now.getHours()
+      };
+//      console.log(d)
+      this.render(d);
+      this.$ls.set(
+        'daily',{
+          'time':this.time,
+          'card':d.card,
+          'path':d.path,
+          'reversed':d.reversed,
+          'mean':d.mean
+        },24*60*60*1000);//a day expire
     }
   }
 }
@@ -87,6 +115,9 @@ export default {
   color:black;
   border:solid black;
   border-width:2px;
+}
+
+.draw-time{
 }
 
 .choose{
