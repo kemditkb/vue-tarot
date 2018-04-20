@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" @click.right="e=>{e.preventDefault()}">
   	<transition name="fade">
 			<router-view></router-view>
 		</transition>
@@ -13,6 +13,9 @@ export default {
 </script>
 
 <style>
+#app{
+	text-align: center
+}
 .fade-enter-active, .fade-leave-active {
   transition-property: opacity;
   transition-duration: .25s;

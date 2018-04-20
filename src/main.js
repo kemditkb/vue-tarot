@@ -11,6 +11,8 @@ import About from '@/components/stage1/about'
 import Daily from '@/components/stage1/daily'
 import Disclaimer from '@/components/stage1/disclaimer'
 import Spread from '@/components/stage1/spread'
+import SpreadResult from '@/components/stage1/spreadresult'
+
 
 Vue.use(VueRouter)
 
@@ -19,7 +21,7 @@ const routes = [{
   component: Home
 },{
   path: '/start',
-  component:Start
+  component:Start,
 },{
 	path: '/about',
 	component:About,
@@ -32,6 +34,10 @@ const routes = [{
 },{
 	path: '/spread',
 	component:Spread,
+},{
+	name:'result',
+	path: '/result/:num',
+	component:SpreadResult
 }
 ]
 

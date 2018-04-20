@@ -1,22 +1,9 @@
 <template>
-  <div class="daily">
+  <div class="result">
   	<div class="title">
-      <h1>每日運勢</h1>
-    </div>
-    <div class="result" v-if="draw">
-      <flexbox>
-
-        <img :src="path" :style="style">
-        <flexbox-item>
-          <div class="profile"></div>
-          <div class="text">
-            <i class="card-mean"> {{ mean }}</i>
-            <h5 class="card-name">{{ card }}</h5>
-          </div>
-        </flexbox-item>
-        
-      </flexbox>
-    </div>
+  		<h1>抽牌機！</h1>
+      <h2>您想要抽 {{ $route.params.num }} 張牌...</h2>
+  	</div>
 
     <div class="choose">
       <div  id="enter" v-if="!draw">
@@ -28,18 +15,16 @@
         <x-icon type="ios-arrow-thin-left" size="150"></x-icon>
       </div>
     </div> 
-
   </div>
 </template>
 
 <script>
-import { Divider, Flexbox, FlexboxItem } from 'vux'
-//import  {}  from './draw'
-let draw = require('./draw.js')
+import { Divider } from 'vux'
 
+let draw = require('./draw.js')
 export default {
   components: {
-    Divider, Flexbox, FlexboxItem
+    Divider
   },
   data () {
     return {
@@ -50,6 +35,14 @@ export default {
       card:'',
       style:'',
     }
+  },
+  mounted(){
+    let num = this.$route.params.num;
+    if(num!=1 && num!=3 && num!=5){
+      console.log("Not Allow to Access!")
+      return
+    }
+    console.log("congratulations")
   },
   methods:{
     leaveHandler(){
@@ -79,18 +72,5 @@ export default {
 </script>
 
 <style scoped>
-.result{
-  background-color: rgb(255,255,255);
-  padding:20px;
-  color:black;
-  border:solid black;
-  border-width:2px;
-}
 
-.choose{
-  padding:30px;
-}
-img{
-  width:150px;
-}
 </style>
