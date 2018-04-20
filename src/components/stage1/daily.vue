@@ -3,25 +3,31 @@
   	<div class="title">
       <h1>每日運勢</h1>
     </div>
-    <div class="result" v-if="draw">
-      <flexbox>
-        <img :src="path" :style="style">
-        <flexbox-item>
-          <div class="profile"></div>
-          <div class="text">
-            <i class="card-mean"> {{ mean }}</i>
-            <h5 class="card-name">{{ card }}</h5>
-          </div>
-        </flexbox-item>
-      </flexbox>
+
+    <transition name="v2">
+    <div v-if="draw">
+      <div class="result">
+        <flexbox>
+          <img :src="path" :style="style">
+          <flexbox-item>
+            <div class="profile"></div>
+            <div class="text">
+              <i class="card-mean"> {{ mean }}</i>
+              <h5 class="card-name">{{ card }}</h5>
+            </div>
+          </flexbox-item>
+        </flexbox>
+      </div>
+      <i class="draw-time">上次抽牌於{{time.month}}月{{time.date}}號 {{time.hours}}點...</i>
     </div>
 
-    <i class="draw-time">上次抽排於{{time.month}}月{{time.date}}號 {{time.hours}}點...</i>
+    </transition>
+
 
     <div class="choose">
       <div  id="enter" v-if="!draw">
-        <p>請冥想並按住按鈕...</p>
-        <x-icon @mousedown="tStart" @mouseup="tEnd" @touchstart="tStart" @touchend="tEnd" type="ios-circle-filled" size="150"></x-icon>
+        <p>請冥想並按下按鈕...</p>
+        <x-icon @click="tEnd" type="ios-circle-filled" size="150"></x-icon>
       </div>
       <divider>{{msg}}</divider>
       <div id="leave" @click="leaveHandler">
@@ -84,8 +90,7 @@ export default {
     },
     tEnd(e){
       let touchtime = (e.timeStamp-this.startTouchTime)/1000;
-//      if(touchTime<1.5) return
-
+      //if(touchTime<1) return
       let d = daily();
       let now = new Date;
       d.time = {
@@ -123,5 +128,6 @@ export default {
 .choose{
   padding:30px;
 }
+
 
 </style>
