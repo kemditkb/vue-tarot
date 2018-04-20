@@ -16,7 +16,7 @@
       </flexbox>
     </div>
 
-    <p class="draw-time">{{time.month}}月{{time.date}}號 {{time.hours}}點</p>
+    <i class="draw-time">上次抽排於{{time.month}}月{{time.date}}號 {{time.hours}}點...</i>
 
     <div class="choose">
       <div  id="enter" v-if="!draw">
