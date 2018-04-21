@@ -8,7 +8,7 @@
         <br>
         <i>「無馱無馱無馱無馱無馱無馱無馱無馱無馱無馱」 - 迪奧·布蘭度</i>
         <br>
-        <h3>Below is this repo on Github</h3>
+        <h3>This is an Open Source Project</h3>
         <a href='https://github.com/realdennis/vue-tarot'>
                 <img class="github" :src="gPath" alt=""><br>Github</a>  
       </div>
