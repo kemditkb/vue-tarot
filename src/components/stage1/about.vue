@@ -4,7 +4,7 @@
       <h1>關於我們</h1>
 
       <div class="contents">
-        <img src="/static/JOJO2.png">
+        <img :src="path">
         <br>
         <i>「無馱無馱無馱無馱無馱無馱無馱無馱無馱無馱」 - 迪奧·布蘭度</i>
         <br>
@@ -26,6 +26,7 @@ export default {
   },
   data () {
     return {
+      path:'./static/JOJO2.jpg',
       msg: 'Hello World!'
     }
   },
