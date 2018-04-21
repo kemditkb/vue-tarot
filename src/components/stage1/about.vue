@@ -4,11 +4,13 @@
       <h1>關於我們</h1>
 
       <div class="contents">
-        <img :src="path">
+        <img class="JOJO2" :src="path">
         <br>
         <i>「無馱無馱無馱無馱無馱無馱無馱無馱無馱無馱」 - 迪奧·布蘭度</i>
         <br>
-        <h3>這個開發者很懶...<br>不打算自我介紹...</h3>
+        <h3>Below is this repo on Github</h3>
+        <a href='https://github.com/realdennis/vue-tarot'>
+                <img class="github" :src="gPath" alt=""><br>Github</a>  
       </div>
     </div>
     <divider>Back</divider>
@@ -26,6 +28,7 @@ export default {
   },
   data () {
     return {
+      gPath:'./static/github.jpg',
       path:'./static/JOJO2.jpg',
       msg: 'Hello World!'
     }
@@ -47,10 +50,14 @@ export default {
 .choose{
 	margin:20px;
 }
-img{
+.JOJO2{
   width:250px;
 }
+.github{
+  width:40px;
+}
 .contents{
+  background-color: white;
   text-align: center; 
   padding-top:10px;
   border:solid black; 
