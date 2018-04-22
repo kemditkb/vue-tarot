@@ -2,13 +2,14 @@
 
 > 基於Vue.js實作的塔羅牌App，移植自己在Line上的塔羅機器人。 
 
+## Demo
+> ![](https://raw.githubusercontent.com/realdennis/vue-tarot/master/demo.gif)
+
 ## 介紹
 - 透過Localstorage實作抽牌時間計算
 - 採用Vux UI 
 - 手機、豎屏 用戶優先
 
-## Screenshot
-> ![](https://raw.githubusercontent.com/realdennis/vue-tarot/master/static/screenshot.jpg)
 
 ## Build Setup
 
